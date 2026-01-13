@@ -1,9 +1,24 @@
-import { Shield, TrendingDown, Sparkles, Camera, Smartphone, Brain, Clock, Lock } from 'lucide-react';
+import { Shield, TrendingDown, Sparkles, Camera, Smartphone, Brain, Clock, Lock, Calculator } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { useState } from 'react';
 
 export const Home = () => {
+  const [numUnits, setNumUnits] = useState('');
+  const [portariaType, setPortariaType] = useState('');
+  const [currentCost, setCurrentCost] = useState('');
+  const [numPortoesPedestres, setNumPortoesPedestres] = useState('');
+  const [hasControlePedestres, setHasControlePedestres] = useState('');
+  const [tipoControlePedestres, setTipoControlePedestres] = useState('');
+  const [numPortoesVeiculos, setNumPortoesVeiculos] = useState('');
+  const [hasControleVeiculos, setHasControleVeiculos] = useState('');
+  const [tipoControleVeiculos, setTipoControleVeiculos] = useState('');
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -13,6 +28,55 @@ export const Home = () => {
     const message = encodeURIComponent('Olá! Gostaria de solicitar uma proposta para portaria remota.');
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
+
+  const calculateEconomy = () => {
+    if (!numUnits || !currentCost) return null;
+
+    let valorPortaria = 4000;
+    let valorComodato = 1000;
+    
+    const units = parseInt(numUnits);
+    
+    // Regras de adição por número de unidades
+    if (units >= 40) valorPortaria += 300;
+    if (units >= 41 && units <= 64) valorPortaria += 600;
+    if (units >= 65 && units <= 84) valorPortaria += 900;
+    if (units >= 85 && units <= 104) valorPortaria += 1200;
+    if (units >= 105 && units <= 120) valorPortaria += 1500;
+    
+    // Regras de portões de pedestres
+    if (numPortoesPedestres && parseInt(numPortoesPedestres) > 4) {
+      valorPortaria += 300;
+    }
+    
+    // Regras de portões de veículos
+    if (numPortoesVeiculos && parseInt(numPortoesVeiculos) > 4) {
+      valorPortaria += 400;
+    }
+    
+    // Descontos por controle automatizado
+    if (hasControlePedestres === 'sim') {
+      valorPortaria -= 200;
+    }
+    
+    if (hasControleVeiculos === 'sim') {
+      valorPortaria -= 250;
+    }
+    
+    const valorTotal = valorPortaria + valorComodato;
+    const custoAtual = parseFloat(currentCost.replace(/\D/g, '')) || 0;
+    const economiaMensal = custoAtual - valorTotal;
+    const economiaAnual = economiaMensal * 12;
+    
+    return {
+      valorTotal,
+      economiaMensal,
+      economiaAnual,
+      custoAtual
+    };
+  };
+
+  const economy = calculateEconomy();
 
   const advantages = [
     {
