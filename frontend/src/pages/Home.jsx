@@ -69,7 +69,8 @@ export const Home = () => {
               <img 
                 src="https://customer-assets.emergentagent.com/job_secure-entry-40/artifacts/ub29ebpw_1.png" 
                 alt="Securesys Logo" 
-                className="h-12 w-auto"
+                className="h-12 w-auto object-contain"
+                style={{ filter: 'brightness(0) invert(1)', mixBlendMode: 'multiply' }}
               />
               <span className="text-xl font-bold text-gray-900">Securesys</span>
             </div>
