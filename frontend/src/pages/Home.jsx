@@ -1,4 +1,4 @@
-import { Shield, TrendingDown, Sparkles, Camera, Smartphone, Brain, Clock, Cloud, Lock } from 'lucide-react';
+import { TrendingDown, Sparkles, Camera, Smartphone, Brain, Clock, Lock } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
@@ -65,10 +65,12 @@ export const Home = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-lg flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
+            <div className="flex items-center space-x-3">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_secure-entry-40/artifacts/ub29ebpw_1.png" 
+                alt="Securesys Logo" 
+                className="h-12 w-auto"
+              />
               <span className="text-xl font-bold text-gray-900">Securesys</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -308,10 +310,12 @@ export const Home = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-white" />
-                </div>
+              <div className="flex items-center space-x-3 mb-4">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_secure-entry-40/artifacts/ub29ebpw_1.png" 
+                  alt="Securesys Logo" 
+                  className="h-10 w-auto"
+                />
                 <span className="text-xl font-bold">Securesys</span>
               </div>
               <p className="text-gray-400 leading-relaxed">
