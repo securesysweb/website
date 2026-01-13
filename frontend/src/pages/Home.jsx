@@ -66,12 +66,13 @@ export const Home = () => {
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img 
-                src="https://customer-assets.emergentagent.com/job_secure-entry-40/artifacts/ub29ebpw_1.png" 
-                alt="Securesys Logo" 
-                className="h-12 w-auto object-contain"
-                style={{ filter: 'brightness(0) invert(1)', mixBlendMode: 'multiply' }}
-              />
+              <div className="bg-white rounded-lg p-1">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_secure-entry-40/artifacts/ub29ebpw_1.png" 
+                  alt="Securesys Logo" 
+                  className="h-10 w-auto object-contain"
+                />
+              </div>
               <span className="text-xl font-bold text-gray-900">Securesys</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -312,11 +313,13 @@ export const Home = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_secure-entry-40/artifacts/ub29ebpw_1.png" 
-                  alt="Securesys Logo" 
-                  className="h-10 w-auto"
-                />
+                <div className="bg-gray-800 rounded-lg p-1">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_secure-entry-40/artifacts/ub29ebpw_1.png" 
+                    alt="Securesys Logo" 
+                    className="h-10 w-auto object-contain"
+                  />
+                </div>
                 <span className="text-xl font-bold">Securesys</span>
               </div>
               <p className="text-gray-400 leading-relaxed">
