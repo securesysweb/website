@@ -258,7 +258,7 @@ export const Home = () => {
                 A economia de 70% é real?
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 leading-relaxed">
-                Sim! Uma portaria terceirizada tradicional custa cerca de R$ 21.000/mês, enquanto nossa solução completa sai por R$ 6.300/mês, gerando uma economia de R$ 176.400 no primeiro ano.
+                Sim! Uma portaria terceirizada tradicional custa cerca de R$ 21.000/mês, enquanto nossa solução para uma portaria tem um custo de R$ 6.300/mês, podendo variar conforme o projeto, já com equipamentos inclusos, gerando uma economia de R$ 176.400 no primeiro ano.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="bg-white rounded-xl px-6 border-0 shadow-md">
