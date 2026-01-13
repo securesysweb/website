@@ -289,12 +289,12 @@ export const Home = () => {
               <div className="space-y-4">
                 <a href="tel:11959875498" className="block">
                   <Button size="lg" className="w-full bg-cyan-500 hover:bg-cyan-600 text-white text-lg py-6">
-                    <span className="mr-2">📱</span> (11) 95987-5498
+                    (11) 95987-5498
                   </Button>
                 </a>
                 <a href="mailto:elio.soares@securesys.com.br" className="block">
                   <Button size="lg" variant="outline" className="w-full border-2 border-gray-300 hover:border-cyan-500 text-lg py-6">
-                    <span className="mr-2">✉️</span> elio.soares@securesys.com.br
+                    elio.soares@securesys.com.br
                   </Button>
                 </a>
               </div>
