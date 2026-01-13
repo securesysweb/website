@@ -249,6 +249,231 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* Calculator Section */}
+      <section className="py-24 px-6 bg-gray-50">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-cyan-50 rounded-2xl mb-4">
+              <Calculator className="w-8 h-8 text-cyan-500" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Calcule Sua Economia</h2>
+            <p className="text-xl text-gray-600">Descubra quanto você pode economizar com a portaria remota Securesys</p>
+          </div>
+
+          <Card className="border-0 shadow-2xl">
+            <CardContent className="p-8 md:p-12">
+              <div className="space-y-6">
+                {/* Número de Unidades */}
+                <div className="space-y-2">
+                  <Label htmlFor="numUnits" className="text-base font-semibold">Número de Unidades*</Label>
+                  <Input
+                    id="numUnits"
+                    type="number"
+                    min="1"
+                    max="120"
+                    placeholder="Digite o número de unidades (1-120)"
+                    value={numUnits}
+                    onChange={(e) => setNumUnits(e.target.value)}
+                    className="h-12"
+                  />
+                </div>
+
+                {/* Tipo de Portaria */}
+                <div className="space-y-2">
+                  <Label className="text-base font-semibold">Tipo de Portaria Atual*</Label>
+                  <RadioGroup value={portariaType} onValueChange={setPortariaType}>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="terceirizada" id="terceirizada" />
+                      <Label htmlFor="terceirizada" className="font-normal cursor-pointer">Terceirizada</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="organica" id="organica" />
+                      <Label htmlFor="organica" className="font-normal cursor-pointer">Orgânica</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+
+                {/* Custo Atual */}
+                <div className="space-y-2">
+                  <Label htmlFor="currentCost" className="text-base font-semibold">Custo da Portaria Atual (R$)*</Label>
+                  <Input
+                    id="currentCost"
+                    type="text"
+                    placeholder="Ex: 21000"
+                    value={currentCost}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, '');
+                      setCurrentCost(value);
+                    }}
+                    className="h-12"
+                  />
+                </div>
+
+                {/* Portões de Pedestres */}
+                <div className="space-y-2">
+                  <Label htmlFor="numPortoesPedestres" className="text-base font-semibold">Número de Portões de Pedestres*</Label>
+                  <Select value={numPortoesPedestres} onValueChange={setNumPortoesPedestres}>
+                    <SelectTrigger className="h-12">
+                      <SelectValue placeholder="Selecione" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {[1, 2, 3, 4, 5, 6].map((num) => (
+                        <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Controle de Pedestres */}
+                <div className="space-y-2">
+                  <Label className="text-base font-semibold">Possui Controle de Pedestres Automatizado?*</Label>
+                  <RadioGroup value={hasControlePedestres} onValueChange={(value) => {
+                    setHasControlePedestres(value);
+                    if (value === 'nao') setTipoControlePedestres('');
+                  }}>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="sim" id="controle-ped-sim" />
+                      <Label htmlFor="controle-ped-sim" className="font-normal cursor-pointer">Sim</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="nao" id="controle-ped-nao" />
+                      <Label htmlFor="controle-ped-nao" className="font-normal cursor-pointer">Não</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+
+                {/* Tipo de Controle de Pedestres */}
+                {hasControlePedestres === 'sim' && (
+                  <div className="space-y-2 pl-6 border-l-2 border-cyan-500">
+                    <Label htmlFor="tipoControlePedestres" className="text-base font-semibold">Tipo de Controle</Label>
+                    <Select value={tipoControlePedestres} onValueChange={setTipoControlePedestres}>
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Selecione o tipo" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="facial">Facial</SelectItem>
+                        <SelectItem value="digital">Digital</SelectItem>
+                        <SelectItem value="tag">Tag</SelectItem>
+                        <SelectItem value="cracha">Crachá</SelectItem>
+                        <SelectItem value="outros">Outros</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+
+                {/* Portões de Veículos */}
+                <div className="space-y-2">
+                  <Label htmlFor="numPortoesVeiculos" className="text-base font-semibold">Número de Portões de Veículos*</Label>
+                  <Select value={numPortoesVeiculos} onValueChange={setNumPortoesVeiculos}>
+                    <SelectTrigger className="h-12">
+                      <SelectValue placeholder="Selecione" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {[1, 2, 3, 4, 5, 6].map((num) => (
+                        <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Controle de Veículos */}
+                <div className="space-y-2">
+                  <Label className="text-base font-semibold">Possui Controle de Entrada/Saída de Veículos Automatizado?*</Label>
+                  <RadioGroup value={hasControleVeiculos} onValueChange={(value) => {
+                    setHasControleVeiculos(value);
+                    if (value === 'nao') setTipoControleVeiculos('');
+                  }}>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="sim" id="controle-veic-sim" />
+                      <Label htmlFor="controle-veic-sim" className="font-normal cursor-pointer">Sim</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="nao" id="controle-veic-nao" />
+                      <Label htmlFor="controle-veic-nao" className="font-normal cursor-pointer">Não</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+
+                {/* Tipo de Controle de Veículos */}
+                {hasControleVeiculos === 'sim' && (
+                  <div className="space-y-2 pl-6 border-l-2 border-cyan-500">
+                    <Label htmlFor="tipoControleVeiculos" className="text-base font-semibold">Tipo de Controle</Label>
+                    <Select value={tipoControleVeiculos} onValueChange={setTipoControleVeiculos}>
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Selecione o tipo" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="controle">Controle</SelectItem>
+                        <SelectItem value="tag-veicular">Tag Veicular</SelectItem>
+                        <SelectItem value="facial">Facial</SelectItem>
+                        <SelectItem value="digital">Digital</SelectItem>
+                        <SelectItem value="cracha">Crachá</SelectItem>
+                        <SelectItem value="outros">Outros</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+
+                {/* Resultado do Cálculo */}
+                {economy && (
+                  <div className="mt-8 pt-8 border-t-2 border-gray-200">
+                    <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 p-8 rounded-2xl border-2 border-cyan-500">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Resultado da Estimativa</h3>
+                      
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-700">Custo Atual:</span>
+                          <span className="text-2xl font-bold text-gray-900">
+                            R$ {economy.custoAtual.toLocaleString('pt-BR')}
+                          </span>
+                        </div>
+                        
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-700">Portaria Remota Securesys:</span>
+                          <span className="text-2xl font-bold text-cyan-600">
+                            R$ {economy.valorTotal.toLocaleString('pt-BR')}
+                          </span>
+                        </div>
+                        
+                        <div className="h-px bg-gray-300 my-4"></div>
+                        
+                        <div className="flex justify-between items-center">
+                          <span className="text-lg font-semibold text-gray-900">Economia Mensal:</span>
+                          <span className="text-3xl font-bold text-green-600">
+                            R$ {economy.economiaMensal.toLocaleString('pt-BR')}
+                          </span>
+                        </div>
+                        
+                        <div className="flex justify-between items-center">
+                          <span className="text-lg font-semibold text-gray-900">Economia Anual:</span>
+                          <span className="text-4xl font-bold text-green-600">
+                            R$ {economy.economiaAnual.toLocaleString('pt-BR')}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="mt-6 p-4 bg-white/50 rounded-xl">
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          * Valores estimados. Os custos podem variar conforme o projeto e particularidades do local. 
+                          Entre em contato para uma proposta personalizada.
+                        </p>
+                      </div>
+                      
+                      <Button 
+                        onClick={openWhatsApp} 
+                        className="w-full mt-6 bg-cyan-500 hover:bg-cyan-600 text-white h-14 text-lg"
+                      >
+                        Solicitar Proposta Personalizada
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Technology Section */}
       <section id="tecnologia" className="py-24 px-6 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
