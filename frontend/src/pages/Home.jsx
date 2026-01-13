@@ -8,6 +8,12 @@ export const Home = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const openWhatsApp = () => {
+    const phoneNumber = '5511959875498';
+    const message = encodeURIComponent('Olá! Gostaria de solicitar uma proposta para portaria remota.');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   const advantages = [
     {
       icon: Shield,
@@ -79,7 +85,7 @@ export const Home = () => {
               <a href="#vantagens" className="text-gray-600 hover:text-cyan-500 transition-colors">Vantagens</a>
               <a href="#economia" className="text-gray-600 hover:text-cyan-500 transition-colors">Economia</a>
               <a href="#tecnologia" className="text-gray-600 hover:text-cyan-500 transition-colors">Tecnologia</a>
-              <Button onClick={scrollToContact} className="bg-cyan-500 hover:bg-cyan-600 text-white">Solicitar Proposta</Button>
+              <Button onClick={openWhatsApp} className="bg-cyan-500 hover:bg-cyan-600 text-white">Solicitar Proposta</Button>
             </div>
           </div>
         </nav>
@@ -104,10 +110,10 @@ export const Home = () => {
               Reduza custos em até 70% e aumente a segurança com nossa solução de portaria remota 24 horas, monitoramento inteligente e tecnologia de ponta.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <Button onClick={scrollToContact} size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-6 text-lg">
+              <Button onClick={openWhatsApp} size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-6 text-lg">
                 Solicitar Proposta Gratuita
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-gray-300 hover:border-cyan-500 px-8 py-6 text-lg">
+              <Button onClick={() => document.getElementById('tecnologia')?.scrollIntoView({ behavior: 'smooth' })} size="lg" variant="outline" className="border-2 border-gray-300 hover:border-cyan-500 px-8 py-6 text-lg">
                 Conhecer Tecnologias
               </Button>
             </div>
