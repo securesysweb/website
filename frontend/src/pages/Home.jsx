@@ -612,11 +612,13 @@ Gostaria de receber uma proposta personalizada!`;
           </p>
           <div className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl">
             <div className="space-y-4">
-              <a href="tel:11959875498" className="block">
-                <Button size="lg" className="w-full bg-cyan-500 hover:bg-cyan-600 text-white text-lg py-6">
-                  (11) 95987-5498
-                </Button>
-              </a>
+              <Button 
+                onClick={openWhatsApp}
+                size="lg" 
+                className="w-full bg-cyan-500 hover:bg-cyan-600 text-white text-lg py-6"
+              >
+                (11) 95987-5498
+              </Button>
               <a href="mailto:contato@securesys.com.br" className="block">
                 <Button size="lg" variant="outline" className="w-full border-2 border-gray-300 hover:border-cyan-500 text-lg py-6">
                   contato@securesys.com.br
