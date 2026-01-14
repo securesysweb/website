@@ -28,16 +28,24 @@ export const Home = () => {
     let message = 'Olá! Gostaria de solicitar uma proposta para portaria remota.';
     
     if (includeCalculatorData && economy) {
+      const tipoPortariaTexto = portariaType === 'terceirizada' ? 'Terceirizada' : 'Orgânica';
+      const controlePedestresTexto = hasControlePedestres === 'sim' 
+        ? `Sim${tipoControlePedestres ? ` (${tipoControlePedestres})` : ''}` 
+        : 'Não';
+      const controleVeiculosTexto = hasControleVeiculos === 'sim' 
+        ? `Sim${tipoControleVeiculos ? ` (${tipoControleVeiculos})` : ''}` 
+        : 'Não';
+      
       message = `Olá! Gostaria de solicitar uma proposta para portaria remota.
 
 📊 *Dados do meu condomínio:*
 • Número de unidades: ${numUnits}
-• Tipo de portaria atual: ${portariaType === 'terceirizada' ? 'Terceirizada' : 'Orgânica'}
+• Tipo de portaria atual: ${tipoPortariaTexto}
 • Custo atual: R$ ${parseFloat(currentCost).toLocaleString('pt-BR')}
-• Portões de pedestres: ${numPortoesPedestres}
-• Controle de pedestres: ${hasControlePedestres === 'sim' ? `Sim (${tipoControlePedestres || 'não especificado'})` : 'Não'}
-• Portões de veículos: ${numPortoesVeiculos}
-• Controle de veículos: ${hasControleVeiculos === 'sim' ? `Sim (${tipoControleVeiculos || 'não especificado'})` : 'Não'}
+• Portões de pedestres: ${numPortoesPedestres || 'Não informado'}
+• Controle de pedestres: ${controlePedestresTexto}
+• Portões de veículos: ${numPortoesVeiculos || 'Não informado'}
+• Controle de veículos: ${controleVeiculosTexto}
 
 💰 *Estimativa de economia:*
 • Valor estimado Securesys: R$ ${economy.valorTotal.toLocaleString('pt-BR')}/mês
