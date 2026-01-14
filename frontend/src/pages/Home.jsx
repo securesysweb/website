@@ -23,10 +23,31 @@ export const Home = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const openWhatsApp = () => {
+  const openWhatsApp = (includeCalculatorData = false) => {
     const phoneNumber = '5511959875498';
-    const message = encodeURIComponent('Olá! Gostaria de solicitar uma proposta para portaria remota.');
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    let message = 'Olá! Gostaria de solicitar uma proposta para portaria remota.';
+    
+    if (includeCalculatorData && economy) {
+      message = `Olá! Gostaria de solicitar uma proposta para portaria remota.
+
+📊 *Dados do meu condomínio:*
+• Número de unidades: ${numUnits}
+• Tipo de portaria atual: ${portariaType === 'terceirizada' ? 'Terceirizada' : 'Orgânica'}
+• Custo atual: R$ ${parseFloat(currentCost).toLocaleString('pt-BR')}
+• Portões de pedestres: ${numPortoesPedestres}
+• Controle de pedestres: ${hasControlePedestres === 'sim' ? `Sim (${tipoControlePedestres || 'não especificado'})` : 'Não'}
+• Portões de veículos: ${numPortoesVeiculos}
+• Controle de veículos: ${hasControleVeiculos === 'sim' ? `Sim (${tipoControleVeiculos || 'não especificado'})` : 'Não'}
+
+💰 *Estimativa de economia:*
+• Valor estimado Securesys: R$ ${economy.valorTotal.toLocaleString('pt-BR')}/mês
+• Economia mensal: R$ ${economy.economiaMensal.toLocaleString('pt-BR')}
+• Economia anual: R$ ${economy.economiaAnual.toLocaleString('pt-BR')}
+
+Gostaria de receber uma proposta personalizada!`;
+    }
+    
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   const calculateEconomy = () => {
@@ -462,7 +483,7 @@ export const Home = () => {
                       </div>
                       
                       <Button 
-                        onClick={openWhatsApp} 
+                        onClick={() => openWhatsApp(true)} 
                         className="w-full mt-4 bg-cyan-500 hover:bg-cyan-600 text-white h-12 text-base"
                       >
                         Solicitar Proposta Personalizada
