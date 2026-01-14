@@ -658,10 +658,8 @@ Gostaria de receber uma proposta personalizada!`;
             <div>
               <h4 className="font-bold mb-4">Contato</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>Elio Soares</li>
-                <li>Gerente Comercial</li>
                 <li className="hover:text-cyan-400 transition-colors">(11) 95987-5498</li>
-                <li className="hover:text-cyan-400 transition-colors break-all">elio.soares@securesys.com.br</li>
+                <li className="hover:text-cyan-400 transition-colors break-all">contato@securesys.com.br</li>
               </ul>
             </div>
           </div>
