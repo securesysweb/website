@@ -250,22 +250,22 @@ export const Home = () => {
       </section>
 
       {/* Calculator Section */}
-      <section className="py-24 px-6 bg-gray-50">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-cyan-50 rounded-2xl mb-4">
-              <Calculator className="w-8 h-8 text-cyan-500" />
+      <section className="py-16 px-6 bg-gray-50">
+        <div className="container mx-auto max-w-3xl">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-14 h-14 bg-cyan-50 rounded-xl mb-3">
+              <Calculator className="w-7 h-7 text-cyan-500" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Calcule Sua Economia</h2>
-            <p className="text-xl text-gray-600">Descubra quanto você pode economizar com a portaria remota Securesys</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Calcule Sua Economia</h2>
+            <p className="text-lg text-gray-600">Descubra quanto você pode economizar com a portaria remota</p>
           </div>
 
-          <Card className="border-0 shadow-2xl">
-            <CardContent className="p-8 md:p-12">
-              <div className="space-y-6">
+          <Card className="border-0 shadow-xl">
+            <CardContent className="p-6 md:p-8">
+              <div className="space-y-4">
                 {/* Número de Unidades */}
-                <div className="space-y-2">
-                  <Label htmlFor="numUnits" className="text-base font-semibold">Número de Unidades*</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="numUnits" className="text-sm font-semibold">Número de Unidades*</Label>
                   <Input
                     id="numUnits"
                     type="number"
@@ -274,28 +274,28 @@ export const Home = () => {
                     placeholder="Digite o número de unidades (1-120)"
                     value={numUnits}
                     onChange={(e) => setNumUnits(e.target.value)}
-                    className="h-12"
+                    className="h-10"
                   />
                 </div>
 
                 {/* Tipo de Portaria */}
-                <div className="space-y-2">
-                  <Label className="text-base font-semibold">Tipo de Portaria Atual*</Label>
-                  <RadioGroup value={portariaType} onValueChange={setPortariaType}>
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-semibold">Tipo de Portaria Atual*</Label>
+                  <RadioGroup value={portariaType} onValueChange={setPortariaType} className="flex gap-4">
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="terceirizada" id="terceirizada" />
-                      <Label htmlFor="terceirizada" className="font-normal cursor-pointer">Terceirizada</Label>
+                      <Label htmlFor="terceirizada" className="font-normal cursor-pointer text-sm">Terceirizada</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="organica" id="organica" />
-                      <Label htmlFor="organica" className="font-normal cursor-pointer">Orgânica</Label>
+                      <Label htmlFor="organica" className="font-normal cursor-pointer text-sm">Orgânica</Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 {/* Custo Atual */}
-                <div className="space-y-2">
-                  <Label htmlFor="currentCost" className="text-base font-semibold">Custo da Portaria Atual (R$)*</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="currentCost" className="text-sm font-semibold">Custo da Portaria Atual (R$)*</Label>
                   <Input
                     id="currentCost"
                     type="text"
@@ -305,49 +305,66 @@ export const Home = () => {
                       const value = e.target.value.replace(/\D/g, '');
                       setCurrentCost(value);
                     }}
-                    className="h-12"
+                    className="h-10"
                   />
                 </div>
 
-                {/* Portões de Pedestres */}
-                <div className="space-y-2">
-                  <Label htmlFor="numPortoesPedestres" className="text-base font-semibold">Número de Portões de Pedestres*</Label>
-                  <Select value={numPortoesPedestres} onValueChange={setNumPortoesPedestres}>
-                    <SelectTrigger className="h-12">
-                      <SelectValue placeholder="Selecione" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[1, 2, 3, 4, 5, 6].map((num) => (
-                        <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {/* Portões de Pedestres */}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="numPortoesPedestres" className="text-sm font-semibold">Portões de Pedestres*</Label>
+                    <Select value={numPortoesPedestres} onValueChange={setNumPortoesPedestres}>
+                      <SelectTrigger className="h-10">
+                        <SelectValue placeholder="Selecione" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {[1, 2, 3, 4, 5, 6].map((num) => (
+                          <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Portões de Veículos */}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="numPortoesVeiculos" className="text-sm font-semibold">Portões de Veículos*</Label>
+                    <Select value={numPortoesVeiculos} onValueChange={setNumPortoesVeiculos}>
+                      <SelectTrigger className="h-10">
+                        <SelectValue placeholder="Selecione" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {[1, 2, 3, 4, 5, 6].map((num) => (
+                          <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
 
                 {/* Controle de Pedestres */}
-                <div className="space-y-2">
-                  <Label className="text-base font-semibold">Possui Controle de Pedestres Automatizado?*</Label>
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-semibold">Controle de Pedestres Automatizado?*</Label>
                   <RadioGroup value={hasControlePedestres} onValueChange={(value) => {
                     setHasControlePedestres(value);
                     if (value === 'nao') setTipoControlePedestres('');
-                  }}>
+                  }} className="flex gap-4">
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="sim" id="controle-ped-sim" />
-                      <Label htmlFor="controle-ped-sim" className="font-normal cursor-pointer">Sim</Label>
+                      <Label htmlFor="controle-ped-sim" className="font-normal cursor-pointer text-sm">Sim</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="nao" id="controle-ped-nao" />
-                      <Label htmlFor="controle-ped-nao" className="font-normal cursor-pointer">Não</Label>
+                      <Label htmlFor="controle-ped-nao" className="font-normal cursor-pointer text-sm">Não</Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 {/* Tipo de Controle de Pedestres */}
                 {hasControlePedestres === 'sim' && (
-                  <div className="space-y-2 pl-6 border-l-2 border-cyan-500">
-                    <Label htmlFor="tipoControlePedestres" className="text-base font-semibold">Tipo de Controle</Label>
+                  <div className="space-y-1.5 pl-4 border-l-2 border-cyan-500">
+                    <Label htmlFor="tipoControlePedestres" className="text-sm font-semibold">Tipo de Controle</Label>
                     <Select value={tipoControlePedestres} onValueChange={setTipoControlePedestres}>
-                      <SelectTrigger className="h-12">
+                      <SelectTrigger className="h-10">
                         <SelectValue placeholder="Selecione o tipo" />
                       </SelectTrigger>
                       <SelectContent>
@@ -361,45 +378,30 @@ export const Home = () => {
                   </div>
                 )}
 
-                {/* Portões de Veículos */}
-                <div className="space-y-2">
-                  <Label htmlFor="numPortoesVeiculos" className="text-base font-semibold">Número de Portões de Veículos*</Label>
-                  <Select value={numPortoesVeiculos} onValueChange={setNumPortoesVeiculos}>
-                    <SelectTrigger className="h-12">
-                      <SelectValue placeholder="Selecione" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[1, 2, 3, 4, 5, 6].map((num) => (
-                        <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
                 {/* Controle de Veículos */}
-                <div className="space-y-2">
-                  <Label className="text-base font-semibold">Possui Controle de Entrada/Saída de Veículos Automatizado?*</Label>
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-semibold">Controle de Veículos Automatizado?*</Label>
                   <RadioGroup value={hasControleVeiculos} onValueChange={(value) => {
                     setHasControleVeiculos(value);
                     if (value === 'nao') setTipoControleVeiculos('');
-                  }}>
+                  }} className="flex gap-4">
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="sim" id="controle-veic-sim" />
-                      <Label htmlFor="controle-veic-sim" className="font-normal cursor-pointer">Sim</Label>
+                      <Label htmlFor="controle-veic-sim" className="font-normal cursor-pointer text-sm">Sim</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="nao" id="controle-veic-nao" />
-                      <Label htmlFor="controle-veic-nao" className="font-normal cursor-pointer">Não</Label>
+                      <Label htmlFor="controle-veic-nao" className="font-normal cursor-pointer text-sm">Não</Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 {/* Tipo de Controle de Veículos */}
                 {hasControleVeiculos === 'sim' && (
-                  <div className="space-y-2 pl-6 border-l-2 border-cyan-500">
-                    <Label htmlFor="tipoControleVeiculos" className="text-base font-semibold">Tipo de Controle</Label>
+                  <div className="space-y-1.5 pl-4 border-l-2 border-cyan-500">
+                    <Label htmlFor="tipoControleVeiculos" className="text-sm font-semibold">Tipo de Controle</Label>
                     <Select value={tipoControleVeiculos} onValueChange={setTipoControleVeiculos}>
-                      <SelectTrigger className="h-12">
+                      <SelectTrigger className="h-10">
                         <SelectValue placeholder="Selecione o tipo" />
                       </SelectTrigger>
                       <SelectContent>
@@ -416,44 +418,44 @@ export const Home = () => {
 
                 {/* Resultado do Cálculo */}
                 {economy && (
-                  <div className="mt-8 pt-8 border-t-2 border-gray-200">
-                    <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 p-8 rounded-2xl border-2 border-cyan-500">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Resultado da Estimativa</h3>
+                  <div className="mt-6 pt-6 border-t-2 border-gray-200">
+                    <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl border-2 border-cyan-500">
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">Resultado da Estimativa</h3>
                       
-                      <div className="space-y-4">
+                      <div className="space-y-3">
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-700">Custo Atual:</span>
-                          <span className="text-2xl font-bold text-gray-900">
+                          <span className="text-sm text-gray-700">Custo Atual:</span>
+                          <span className="text-xl font-bold text-gray-900">
                             R$ {economy.custoAtual.toLocaleString('pt-BR')}
                           </span>
                         </div>
                         
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-700">Portaria Remota Securesys:</span>
-                          <span className="text-2xl font-bold text-cyan-600">
+                          <span className="text-sm text-gray-700">Portaria Remota Securesys:</span>
+                          <span className="text-xl font-bold text-cyan-600">
                             R$ {economy.valorTotal.toLocaleString('pt-BR')}
                           </span>
                         </div>
                         
-                        <div className="h-px bg-gray-300 my-4"></div>
+                        <div className="h-px bg-gray-300 my-3"></div>
                         
                         <div className="flex justify-between items-center">
-                          <span className="text-lg font-semibold text-gray-900">Economia Mensal:</span>
-                          <span className="text-3xl font-bold text-green-600">
+                          <span className="text-base font-semibold text-gray-900">Economia Mensal:</span>
+                          <span className="text-2xl font-bold text-green-600">
                             R$ {economy.economiaMensal.toLocaleString('pt-BR')}
                           </span>
                         </div>
                         
                         <div className="flex justify-between items-center">
-                          <span className="text-lg font-semibold text-gray-900">Economia Anual:</span>
-                          <span className="text-4xl font-bold text-green-600">
+                          <span className="text-base font-semibold text-gray-900">Economia Anual:</span>
+                          <span className="text-3xl font-bold text-green-600">
                             R$ {economy.economiaAnual.toLocaleString('pt-BR')}
                           </span>
                         </div>
                       </div>
                       
-                      <div className="mt-6 p-4 bg-white/50 rounded-xl">
-                        <p className="text-sm text-gray-600 leading-relaxed">
+                      <div className="mt-4 p-3 bg-white/50 rounded-lg">
+                        <p className="text-xs text-gray-600 leading-relaxed">
                           * Valores estimados. Os custos podem variar conforme o projeto e particularidades do local. 
                           Entre em contato para uma proposta personalizada.
                         </p>
@@ -461,7 +463,7 @@ export const Home = () => {
                       
                       <Button 
                         onClick={openWhatsApp} 
-                        className="w-full mt-6 bg-cyan-500 hover:bg-cyan-600 text-white h-14 text-lg"
+                        className="w-full mt-4 bg-cyan-500 hover:bg-cyan-600 text-white h-12 text-base"
                       >
                         Solicitar Proposta Personalizada
                       </Button>
