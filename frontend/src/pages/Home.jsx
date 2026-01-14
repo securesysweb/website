@@ -654,7 +654,6 @@ Gostaria de receber uma proposta personalizada!`;
                 <li className="hover:text-cyan-400 transition-colors cursor-pointer">Portaria Remota</li>
                 <li className="hover:text-cyan-400 transition-colors cursor-pointer">Controle de Acesso</li>
                 <li className="hover:text-cyan-400 transition-colors cursor-pointer">Monitoramento 24h</li>
-                <li className="hover:text-cyan-400 transition-colors cursor-pointer">Biometria Facial</li>
               </ul>
             </div>
             <div>
