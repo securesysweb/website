@@ -611,23 +611,17 @@ Gostaria de receber uma proposta personalizada!`;
             Entre em contato e solicite uma proposta personalizada. Nossa equipe está pronta para atender você.
           </p>
           <div className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl">
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Elio Soares</h3>
-                <p className="text-cyan-600 font-medium">Gerente Comercial</p>
-              </div>
-              <div className="space-y-4">
-                <a href="tel:11959875498" className="block">
-                  <Button size="lg" className="w-full bg-cyan-500 hover:bg-cyan-600 text-white text-lg py-6">
-                    (11) 95987-5498
-                  </Button>
-                </a>
-                <a href="mailto:elio.soares@securesys.com.br" className="block">
-                  <Button size="lg" variant="outline" className="w-full border-2 border-gray-300 hover:border-cyan-500 text-lg py-6">
-                    elio.soares@securesys.com.br
-                  </Button>
-                </a>
-              </div>
+            <div className="space-y-4">
+              <a href="tel:11959875498" className="block">
+                <Button size="lg" className="w-full bg-cyan-500 hover:bg-cyan-600 text-white text-lg py-6">
+                  (11) 95987-5498
+                </Button>
+              </a>
+              <a href="mailto:contato@securesys.com.br" className="block">
+                <Button size="lg" variant="outline" className="w-full border-2 border-gray-300 hover:border-cyan-500 text-lg py-6">
+                  contato@securesys.com.br
+                </Button>
+              </a>
             </div>
           </div>
         </div>
